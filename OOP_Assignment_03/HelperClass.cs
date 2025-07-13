@@ -34,5 +34,37 @@ public class Rectangle
     }
 }
 #endregion
+
+#region Q3
+public class Complex
+{
+    public int real;
+    public int imag;
+    public Complex()
+    {
+        real = 0;
+        imag = 0;
+    }
+    public Complex(int real, int imag)
+    {
+        this.real = real;
+        this.imag = imag;
+    }
+    public override string ToString()
+    {
+        return $"complex number = {real} + {imag}i ";
+    }
+    // Overloading the + operator to add two complex numbers
+    public static Complex operator +(Complex left, Complex right)
+    {
+        return new Complex(left.real + right.real, left.imag + right.imag);
+    }
+    // Overloading the - operator to subtract two complex numbers
+    public static Complex operator -(Complex left, Complex right)
+    {
+        return new Complex(left.real - right.real, left.imag - right.imag);
+    }
+}
+#endregion
 #endregion
 

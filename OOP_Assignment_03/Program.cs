@@ -6,6 +6,7 @@ namespace OOP_Assignment_03
     {
         static void Main(string[] args)
         {
+            #region Part(1)
             #region Q1
             Console.WriteLine("The Sum is " + Add(10, 90));          // Add(int , int) => 100
             Console.WriteLine("The Sum is " + Add(10, 20, 50));       // Add(int , int , int) => 80
@@ -19,6 +20,17 @@ namespace OOP_Assignment_03
             Console.WriteLine(rectangle.Rectangle1nfo); // Width: 10, Height: 20
             rectangle = new Rectangle(15);              // Constructor with one parameter
             Console.WriteLine(rectangle.Rectangle1nfo); // Width: 15, Height: 15
+            #endregion
+
+            #region Q3
+            Console.Write("\n");
+            Complex complex = new Complex(1, 6);
+            Console.WriteLine(complex); // complex number = 1 + 6i
+            Complex complex1 = new Complex(2, 3);
+            Console.WriteLine(complex + complex1); // complex number = 3 + 9i
+            Console.WriteLine(complex - complex1); // complex number = -1 + 3i
+            Console.Write("\n");
+            #endregion
             #endregion
             Console.ReadLine();
         }
