@@ -111,3 +111,125 @@ public class DerivedClass2 : BaseClass
 #endregion
 #endregion
 
+#region With Part(2)
+public class Duration
+{
+    //Function Convert from Seconds to Hours,Minutes,Seconds
+    internal static void ConvertTimebySeconds(Duration d, int S)
+    {
+        d.hours = S / 3600;
+        S %= 3600;
+        d.minutes = S / 60;
+        d.seconds = S % 60;
+    }
+    public int hours;
+    public int minutes;
+    public int seconds;
+    // Default constructor that initializes the duration to 0 hours, 0 minutes, and 0 seconds.
+    public Duration()
+    {
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+    }
+    public Duration(int hours, int minutes, int seconds)
+    {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+    // Override ToString method 
+    public override string ToString()
+    {
+        return $"Hours: {hours} , Minutes : {minutes} , Seconds : {seconds} ";
+    }
+    // Override Equals method
+    public override bool Equals(Object obj)
+    {
+        Duration duration = (Duration)obj;
+        if (duration == null)
+            return false;
+        return this.hours == duration.hours && this.minutes == duration.minutes && this.seconds == duration.seconds;
+    }
+    // Override GetHashCode method
+    public override int GetHashCode()
+    {
+        return (hours, minutes, seconds).GetHashCode();
+    }
+    // Calculates Hours , Minutes and Seconds by Seconds
+    public Duration(int Seconds)
+    {
+        hours = Seconds / 3600;
+        Seconds %= 3600;
+        minutes = Seconds / 60;
+        seconds = Seconds % 60;
+    }
+    // Override the addition operator to add two Duration objects
+    public static Duration operator +(Duration left, Duration right)
+    {
+        return new Duration(left.hours + right.hours, left.minutes + right.minutes, left.seconds + right.seconds);
+    }
+    public static Duration operator +(Duration left, int Seconds)
+    {
+        Duration right = new Duration();
+        ConvertTimebySeconds(right, Seconds);
+        return new Duration(left.hours + right.hours, left.minutes + right.minutes, left.seconds + right.seconds);
+    }
+    public static Duration operator +(int Seconds, Duration right)
+    {
+        Duration left = new Duration();
+        ConvertTimebySeconds(left, Seconds);
+        return new Duration(left.hours + right.hours, left.minutes + right.minutes, left.seconds + right.seconds);
+    }
+    public static Duration operator ++(Duration right)
+    {
+        return new Duration(right.hours, right.minutes + 1, right.seconds);
+    }
+    public static Duration operator --(Duration right)
+    {
+        return new Duration(right.hours, right.minutes - 1, right.seconds);
+    }
+    public static Duration operator -(Duration left, Duration right)
+    {
+        return new Duration(left.hours - right.hours, left.minutes - right.minutes, left.seconds - right.seconds);
+    }
+    public static bool operator >(Duration left, Duration right)
+    {
+        if (left.hours < right.hours)
+            return false;
+        else if (left.hours == right.hours && left.minutes < right.minutes)
+            return false;
+        else if (left.hours == right.hours && left.minutes == right.minutes && left.seconds < right.seconds)
+            return false;
+        else if (left.hours == right.hours && left.minutes == right.minutes && left.seconds == right.seconds)
+            return false;
+        return true;
+
+    }
+    public static bool operator <(Duration left, Duration right)
+    {
+        if (left.hours > right.hours)
+            return false;
+        else if (left.hours == right.hours && left.minutes > right.minutes)
+            return false;
+        else if (left.hours == right.hours && left.minutes == right.minutes && left.seconds > right.seconds)
+            return false;
+        return true;
+    }
+    public static implicit operator bool(Duration D)
+    {
+        return (D.hours >= 0) && (D.minutes >= 0) && (D.seconds >= 0);
+    }
+    public static explicit operator DateTime(Duration D)
+    {
+
+        return DateTime.MinValue
+         .AddHours(D.hours)
+         .AddMinutes(D.minutes)
+         .AddSeconds(D.seconds);
+    }
+
+
+}
+#endregion
+

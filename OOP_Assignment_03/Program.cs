@@ -49,6 +49,52 @@ namespace OOP_Assignment_03
             d2.Display();        // Will call DerivedClass2's method And (Static Binding)
             #endregion
             #endregion
+
+            #region Part(2)
+            Console.WriteLine("\n");
+            Duration D1 = new Duration(1, 10, 15);
+            Console.WriteLine(D1.ToString());
+            Console.WriteLine($"{D1.GetHashCode()} Hashing Code");
+            // Calculates Hours , Minutes and Seconds by Seconds
+            D1 = new Duration(3600);
+            Console.WriteLine(D1.ToString());           //Hours: 1 , Minutes : 0 , Seconds : 0
+            Duration D2 = new Duration(7800);
+            Console.WriteLine(D2.ToString());           //Hours: 2 , Minutes : 10 , Seconds : 0
+            Duration D3 = new Duration(666);
+            Console.WriteLine(D3.ToString());           //Hours: 0 , Minutes : 11 , Seconds : 6
+            // Adding two durations           
+            D3 = D1 + D2;
+            Console.WriteLine("D3 = D1 + D2 : " + D3);           //Hours: 3 , Minutes : 10 , Seconds : 0
+            // Adding one durations and Seconds
+            D3 = D1 + 7800;
+            Console.WriteLine("D3 = D1 + 7800 : " + D3);           //Hours: 3 , Minutes : 10 , Seconds : 0
+            D3 = 666 + D3;
+            Console.WriteLine("D3 = 666 + D3 : " + D3);           //Hours: 3 , Minutes : 21 , Seconds : 6
+            // (Increase One Minute)
+            D3 = ++D1;
+            Console.WriteLine("D3 = ++D1 : " + D3);           //Hours: 1 , Minutes : 1 , Seconds : 0
+            //(Decrease One Minute)
+            D3 = --D2;
+            Console.WriteLine("D3 = --D2 : " + D3);           //Hours: 2 , Minutes : 9 , Seconds : 0
+            // Sub two Duration
+            D1 = D1 - D2;
+            if (D1.hours < 0 || D1.minutes < 0 || D1.seconds < 0)
+                Console.WriteLine("D1 = D1 - D2 : the Duration is Negative ");
+            else
+                Console.WriteLine(" D1 = D1 - D2 : " + D1);
+            // >
+            Console.WriteLine($" D1 > D2 :  {D1 > D2} ");
+            // <=
+            Console.WriteLine($" D1 <= D2 :  {D1 < D2} ");
+            // bool
+            if (D1)
+                Console.WriteLine("if(D1) is not Zero or less ");
+            // DateTime
+            D1 = new Duration(1, 10, 15);
+            DateTime Obj = (DateTime)D1;
+            Console.WriteLine($"As DateTime: {Obj}");
+            #endregion
+
             Console.ReadLine();
         }
         #region With part(1)
