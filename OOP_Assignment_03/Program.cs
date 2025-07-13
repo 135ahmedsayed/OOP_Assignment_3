@@ -36,6 +36,18 @@ namespace OOP_Assignment_03
             Manager manager = new Manager();
             manager.work(); // Employee is  working and Manager is working
             #endregion
+
+            #region Q5
+            Console.Write("\n");
+            BaseClass baseRef1 = new DerivedClass1();
+            baseRef1.Display();  // Will call DerivedClass1's method (override) And (Dynamic Binding)
+
+            BaseClass baseRef2 = new DerivedClass2();
+            baseRef2.Display();  // Will call BaseClass's method (hiding) And (Static Binding)
+
+            DerivedClass2 d2 = new DerivedClass2();
+            d2.Display();        // Will call DerivedClass2's method And (Static Binding)
+            #endregion
             #endregion
             Console.ReadLine();
         }
