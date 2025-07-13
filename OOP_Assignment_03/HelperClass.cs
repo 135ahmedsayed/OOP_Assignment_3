@@ -66,5 +66,24 @@ public class Complex
     }
 }
 #endregion
+
+#region Q4
+public class Employee
+{
+    public virtual void work()
+    {
+        Console.WriteLine("Employee is working");
+    }
+}
+public class Manager : Employee
+{
+    public override void work()
+    {
+        base.work(); // Calls the work method of the Employee class
+        Console.WriteLine("Manager is managing");
+    }
+}
+
+#endregion
 #endregion
 

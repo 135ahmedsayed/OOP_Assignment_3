@@ -31,6 +31,11 @@ namespace OOP_Assignment_03
             Console.WriteLine(complex - complex1); // complex number = -1 + 3i
             Console.Write("\n");
             #endregion
+
+            #region Q4
+            Manager manager = new Manager();
+            manager.work(); // Employee is  working and Manager is working
+            #endregion
             #endregion
             Console.ReadLine();
         }
